@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📚 Simple Library Book Tracker</title>
+</head>
+<body style="font-family: Arial; margin: 30px;">
+  <h2>📚 Library Book Tracker</h2>
+
+  <label>Book Name:</label>
+  <input type="text" id="bookName"><br><br>
+
+  <label>Author Name:</label>
+  <input type="text" id="authorName"><br><br>
+
+  <button onclick="addBook()">Add Book</button>
+
+  <h3>Library Books:</h3>
+  <p id="bookList"></p>
+
+  <script>
+    // ======================
+    // CLASS & OBJECT
+    // ======================
+    class Book {
+      constructor(name, author) {
+        this.name = name;
+        this.author = author;
+        this.dateAdded = new Date(); // DATE concept
+      }
+
+      getDetails() {
+        // STRING concept (toUpperCase + template literals)
+        return `${this.name.toUpperCase()} by ${this.author} (Added on: ${this.dateAdded.toLocaleDateString()})`;
+      }
+    }
+
+    // Simple ARRAY to store books
+    let library = [];
+
+    // ======================
+    // FUNCTION + VALIDATION + ERROR HANDLING
+    // ======================
+    function addBook() {
+      try {
+        let name = document.getElementById("bookName").value.trim();
+        let author = document.getElementById("authorName").value.trim();
+
+        // VALIDATION
+        if (name === "" || author === "") {
+          throw "Book name and author name cannot be empty!";
+        }
+
+        // Create Book object
+        let newBook = new Book(name, author);
+
+        // Add to ARRAY
+        library.push(newBook.getDetails()); // store string details directly for simplicity
+
+        // Display all books — no loop needed
+        document.getElementById("bookList").innerHTML = library.join("<br><br>");
+
+        // Clear inputs
+        document.getElementById("bookName").value = "";
+        document.getElementById("authorName").value = "";
+
+      } catch (err) {
+        alert("⚠️ Error: " + err); // ERROR HANDLING
+      }
+    }
+  </script>
+</body>
+</html>

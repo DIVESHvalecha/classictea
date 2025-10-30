@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example with Input</title>
+  <script>
+    //  Function that runs when the button is clicked
+    function showResult() {
+      //  Variable: get user input and convert to number
+      let num = parseInt(document.getElementById("userNumber").value);
+      let sum = 0;
+
+      //  Loop to calculate sum
+      for (let i = 1; i <= num; i++) {
+        sum = sum + i; // ⚙️ Operator (addition)
+      }
+
+      //  Condition
+      if (sum > 10) {
+        document.getElementById("result").innerHTML =
+          "Sum of first " + num + " numbers = " + sum + " (Greater than 10)";
+      } else {
+        document.getElementById("result").innerHTML =
+          "Sum = " + sum + " (Not greater than 10)";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2> JavaScript Example (With User Input)</h2>
+  <p>Enter a number to find the sum of the first N numbers:</p>
+
+  <!--  Variable input + Event trigger -->
+  <input type="number" id="userNumber" placeholder="Enter a number">
+  <button onclick="showResult()">Calculate</button>
+
+  <p id="result"></p>
+</body>
+</html>

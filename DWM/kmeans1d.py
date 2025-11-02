@@ -35,8 +35,8 @@ def kmeans_1d(arr, k, max_iterations=100):
     return clusters, means
 
 # ---- MAIN PROGRAM ----
-arr = list(map(int, input("Enter array elements (space separated): ").split()))
-k = int(input("Enter number of clusters (k): "))
+arr = [2, 3, 5, 8, 6, 7, 4, 9, 12, 15, 14, 13, 11, 10]
+k = 3
 
 clusters, means = kmeans_1d(arr, k)
 
